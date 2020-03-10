@@ -16,9 +16,11 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.google.gson.Gson;
 import com.viktority.mint.models.CardDetails;
 import com.viktority.mint.pojo.Payload;
 import com.viktority.mint.pojo.RestResponseObject;
@@ -61,7 +63,6 @@ public class CardDetailsServiceImpl implements CardDetailsService {
 		Payload p = new ModelMapper().map(r, Payload.class);
 		p.setBank(r.getBank().getName());
 		returnVal.setPayload(p);
-
 		CardDetails cd = new CardDetails(cardNumber);
 		cdr.save(cd);
 		return returnVal;
