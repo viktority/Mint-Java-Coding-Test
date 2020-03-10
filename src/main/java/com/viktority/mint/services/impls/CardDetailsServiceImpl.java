@@ -47,7 +47,6 @@ public class CardDetailsServiceImpl implements CardDetailsService {
 
 	@Override
 	public ReturnObject verifyCard(String cardNumber) {
-		// environment.getProperty("email.verification.token.expiration_time");
 		ReturnObject returnVal = new ReturnObject();
 		String URL = URI + cardNumber;
 		HttpHeaders headers = new HttpHeaders();
