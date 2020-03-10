@@ -22,10 +22,13 @@ public class CardDetails implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
+	private String cardNumber;
 
-	private boolean success;
-	private String scheme;
-	private String type;
-	private String bank;
+	public CardDetails(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	public CardDetails() {
+	}
 
 }

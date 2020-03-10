@@ -7,8 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.viktority.mint.pojo.ReturnObject;
+import com.viktority.mint.pojo.StatsReturn;
 import com.viktority.mint.services.CardDetailsService;
 
 @RestController
@@ -24,4 +26,13 @@ public class CardSchemeController {
 
 		return ResponseEntity.status(HttpStatus.OK).body(prp);
 	}
+
+	@GetMapping(value = "/stats", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<StatsReturn> getStat(@RequestParam(value = "start", defaultValue = "0") int start,
+			@RequestParam(value = "limit", defaultValue = "10") int limit) {
+		StatsReturn str = cds.getStats(start, limit);
+
+		return ResponseEntity.status(HttpStatus.OK).body(str);
+	}
+
 }
