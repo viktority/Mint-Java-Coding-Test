@@ -21,15 +21,11 @@ import com.google.gson.Gson;
 @RestController
 @RequestMapping("/card-scheme")
 public class CardSchemeController {
-	// card-scheme/verify/
 	@Autowired
 	CardDetailsService cds;
 
 	@Autowired
 	private KafkaTemplate<String, Payload> kafkaTemplate;
-
-	@Autowired
-	private Gson jsonConverter;
 
 	@Value("${kafka.topic}")
 	private String kafkaTopic;
@@ -49,6 +45,5 @@ public class CardSchemeController {
 
 		return ResponseEntity.status(HttpStatus.OK).body(str);
 	}
-
 
 }
